@@ -30,19 +30,6 @@ export default function DataSourcesView({
                   <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                     <Link
                       href={`/${owner.username}/data_sources/new`}
-                      onClick={(e) => {
-                        // Enforce FreePlan limit: 1 DataSource.
-                        if (
-                          dataSources.length >= 1 &&
-                          authUser.username !== "spolu"
-                        ) {
-                          e.preventDefault();
-                          window.alert(
-                            "You are limited to 1 DataSource on our free plan. Contact team@dust.tt if you want to increase this limit."
-                          );
-                          return;
-                        }
-                      }}
                     >
                       <Button>
                         <PlusIcon className="-ml-1 mr-1 h-5 w-5" />

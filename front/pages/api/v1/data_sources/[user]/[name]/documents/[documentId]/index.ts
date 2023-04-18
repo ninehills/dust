@@ -196,26 +196,25 @@ async function handler(
           });
           return;
         }
-
-        if (documents.value.total >= 32) {
+        if (documents.value.total >= 512) {
           res.status(401).json({
             error: {
               type: "data_source_quota_error",
               message:
-                "Data sources are limited to 32 documents on our free plan. Contact team@dust.tt if you want to increase this limit.",
+                "Data sources are limited to 512 documents.",
             },
           });
           return;
         }
       }
 
-      // Enforce FreePlan limit: 1MB per document.
-      if (req.body.text.length > 1024 * 1024) {
+      // Enforce Text limit: 10 MB per document.
+      if (req.body.text.length > 10 * 1024 * 1024) {
         res.status(401).json({
           error: {
             type: "data_source_quota_error",
             message:
-              "Data sources document upload size is limited to 1MB on our free plan. Contact team@dust.tt if you want to increase it.",
+              "Data sources document upload size is limited to 10MB.",
           },
         });
         return;

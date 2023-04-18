@@ -134,6 +134,7 @@ async function handler(
       );
 
       if (dustDataSource.isErr()) {
+        console.log(dustDataSource.isErr())
         res.status(500).end();
         return;
       }
